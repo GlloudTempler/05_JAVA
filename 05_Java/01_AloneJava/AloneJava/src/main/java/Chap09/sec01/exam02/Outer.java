@@ -1,0 +1,41 @@
+package Chap09.sec01.exam02;
+
+/**
+ * packageName : Chap09.sec01.exam02
+ * fileName : Outer
+ * author : GGG
+ * date : 2023-10-02
+ * description : 중첩 클래스 정의 후 각 속성/함수 위치에서 사용하기
+ * 요약 :
+ *       내부 클래스의 공유/일반 클래스 -> 외부 클래스에서 사용하기(일부 사용 제한)
+ *       => 공유 내부 클래스는 외부 클래스의 일반/공유 속성으로 모두 사용 가능
+ * <p>
+ * ===========================================================
+ * DATE            AUTHOR             NOTE
+ * —————————————————————————————
+ * 2023-10-02         GGG          최초 생성
+ */
+public class Outer {
+//    TODO : 일반 속성 클래스(샘플)
+    class Attr{}
+//    TODO : 공유 속성 클래스(샘플)
+    static class Share{};
+
+//    ---------외부클래스에서 사용하기
+//    TODO : 속성, 생성자, 함수
+    Attr attr = new Attr(); // 내부클래스를 일반 속성으로 정의
+    Share share = new Share(); // 공유 내부클래스를 일반 속성으로 정의
+//    TODO : 테스트
+//    static Attr attr2 = new Attr(); // error : Attr(일반 속성 내부클래스는 static 불가)
+    static Share share2 = new Share(); // Share(공유 속성 내부클래스)
+
+//    TODO : 테스트 #2
+    void method1() {
+        Attr attr = new Attr();
+        Share share = new Share();
+    }
+    static void method2() {
+//        Attr attr2 = new Attr();  // static이 없는 클래스는 static함수 내에서 사용 불가
+        Share share2 = new Share(); // static 있어서 가능
+    }
+}

@@ -1,0 +1,49 @@
+package Chap12.Sec01.exam05;
+
+import java.util.Objects;
+
+/**
+ * packageName : Chap12.Sec01.exam05
+ * fileName : Member
+ * author : GGG
+ * date : 2023-09-25
+ * description :
+ * 요약 :
+ * <p>
+ * ===========================================================
+ * DATE            AUTHOR             NOTE
+ * —————————————————————————————
+ * 2023-09-25         GGG          최초 생성
+ */
+public class Member {
+    public String name;
+    public int age;
+
+//        2개짜리 생성자
+
+    public Member(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+//  TODO : 객체 비교 : equals(), hashCode(), toString() (속성)재정의
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Member that = (Member) o;
+        return age == that.age && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);
+    }
+
+    @Override
+    public String toString() {
+        return name + "[" + age + "]";
+    }
+}
